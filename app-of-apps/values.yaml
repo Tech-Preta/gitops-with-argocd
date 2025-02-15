@@ -5,3 +5,6 @@ argocd:
     replicas: 2
   randomLogger:
     enabled: true
+  prometheus:
+    enabled: true
+    ingress: "https://prometheus-mycompany.com"

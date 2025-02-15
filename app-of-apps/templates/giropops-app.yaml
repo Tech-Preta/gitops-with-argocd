@@ -5,7 +5,7 @@ metadata:
   name: random-logger-2
   namespace: argo
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: random-logger2
@@ -14,7 +14,7 @@ spec:
   source:
     path: random-logger/helm
     repoURL: https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git
-    targetRevision: feat/day2
+    targetRevision: feat/day-extras
   syncPolicy:
     automated:
       selfHeal: true

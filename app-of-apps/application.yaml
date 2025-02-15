@@ -1,18 +1,15 @@
-{{ if .Values.argocd.randomLogger.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: random-logger
+  name: app-of-apps
   namespace: argo
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
 spec:
   destination:
-    namespace: random-logger
+    namespace: argo
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: random-logger/helm
+    path: app-of-apps
     repoURL: https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git
     targetRevision: feat/day-extras
   syncPolicy:
@@ -20,4 +17,3 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true 
-{{ end }}

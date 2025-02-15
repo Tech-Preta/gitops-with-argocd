@@ -1,5 +1,6 @@
 randomLogger:
-  image: devlopesbernardo/simple-random-logger:amd64
+  #image: devlopesbernardo/simple-random-logger:amd64
+  image: rebelthor/sleep
   replicas: 5
   port: 5000
   imagePullPolicy: Always

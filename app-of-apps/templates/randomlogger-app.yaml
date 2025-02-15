@@ -5,7 +5,7 @@ metadata:
   name: random-logger
   namespace: argo
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   destination:
     namespace: random-logger

@@ -1,10 +1,13 @@
 # test
 argocd:
-  giropopsSenhas:
+  randomLogger:
     enabled: true
-    replicas: 2
+    replicas: 10
   randomLogger:
     enabled: true
   prometheus:
     enabled: true
     ingress: "https://prometheus-mycompany.com"
+  grafana:
+    enabled: true
+    ingress: "https://grafana-mycompany.com"

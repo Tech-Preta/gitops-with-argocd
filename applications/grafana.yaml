@@ -6,20 +6,20 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: 'https://grafana.github.io/helm-charts'
-    chart: grafana
-    targetRevision: 7.0.19
-    helm:
-      valueFiles: 
-      - $values/grafana/values.yaml
-  - repoURL: 'https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git'
-    targetRevision: feat/day2
-    ref: values
+    - repoURL: "https://grafana.github.io/helm-charts"
+      chart: grafana
+      targetRevision: 7.0.19
+      helm:
+        valueFiles:
+          - $values/grafana/values.yaml
+    - repoURL: "hhttps://github.com/Tech-Preta/gitops-with-argocd.git"
+      targetRevision: feat/day2
+      ref: values
   destination:
     namespace: monitoring
-    server: 'https://kubernetes.default.svc'
+    server: "https://kubernetes.default.svc"
   syncPolicy:
     automated:
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true

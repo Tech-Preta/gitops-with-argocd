@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $values/grafana/values.yaml
-    - repoURL: "hhttps://github.com/Tech-Preta/gitops-with-argocd.git"
+    - repoURL: "https://github.com/Tech-Preta/gitops-with-argocd.git"
       targetRevision: feat/day2
       ref: values
   destination:

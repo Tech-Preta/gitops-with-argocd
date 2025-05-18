@@ -10,14 +10,14 @@ spec:
   sources:
   - repoURL: 'https://grafana.github.io/helm-charts'
     chart: grafana
-    targetRevision: 7.0.19
+    targetRevision: 9.0.0
     helm:
       valueFiles:
       - $values/grafana/values.yaml
       parameters:
       - name: "ingress.hosts[0]"
         value: "{{ .Values.argocd.grafana.ingress }}"
-  - repoURL: 'https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git'
+  - repoURL: 'https://github.com/Tech-Preta/gitops-with-argocd.git'
     targetRevision: feat/day2
     ref: values
   syncPolicy:

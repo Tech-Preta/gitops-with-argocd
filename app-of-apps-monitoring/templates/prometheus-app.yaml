@@ -9,14 +9,14 @@ spec:
   sources:
   - repoURL: 'https://prometheus-community.github.io/helm-charts'
     chart: prometheus
-    targetRevision: 15.7.1
+    targetRevision: 27.16.0
     helm:
       valueFiles:
       - $values/prometheus/values.yaml
       parameters:
       - name: "ingress.hosts[0]"
         value: "{{ .Values.argocd.prometheus.ingress }}"
-  - repoURL: 'https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git'
+  - repoURL: 'https://github.com/Tech-Preta/gitops-with-argocd.git'
     targetRevision: feat/day2
     ref: values
   syncPolicy:

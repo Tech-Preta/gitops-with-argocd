@@ -12,20 +12,20 @@ spec:
     path: app-of-apps-monitoring
     helm:
       parameters:
-      - name: "argocd.prometheus.enabled"
-        value: "true"
-      - name: "argocd.prometheus.ingress"
-        value: "prometheus.company123.com"
-      - name: "argocd.grafana.enabled"
-        value: "true"
-      - name: "argocd.grafana.ingress"
-        value: "grafana.company123.com"
-    repoURL: https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git
+        - name: "argocd.prometheus.enabled"
+          value: "true"
+        - name: "argocd.prometheus.ingress"
+          value: "prometheus.company123.com"
+        - name: "argocd.grafana.enabled"
+          value: "true"
+        - name: "argocd.grafana.ingress"
+          value: "grafana.company123.com"
+    repoURL: https://github.com/Tech-Preta/gitops-with-argocd.git
     targetRevision: feat/day2
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
     syncOptions:
-    - CreateNamespace=true 
-    - PruneLast=true
+      - CreateNamespace=true
+      - PruneLast=true

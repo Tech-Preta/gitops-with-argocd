@@ -1,9 +1,9 @@
 datasources:
- datasources.yaml:
-   apiVersion: 1
-   datasources:
-   - name: Prometheus
-     type: prometheus
-     url: http://prometheus-app-server.prometheus
-     access: proxy
-     isDefault: true
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: https://prom.nataliagranato.xyz
+        access: proxy
+        isDefault: true

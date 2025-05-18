@@ -1,8 +1,7 @@
-# test
 argocd:
   prometheus:
     enabled: true
     ingress: "https://prom.nataliagranato.xyz"
   grafana:
     enabled: true
-    ingress: "https://grafana-nataliagranato.xyz"
+    ingress: "https://grafana.nataliagranato.xyz"

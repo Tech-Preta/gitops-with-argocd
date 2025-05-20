@@ -63,7 +63,29 @@ EOF
 
   sudo chown vscode:vscode $HOME/.kube/config
 
+  # Exporta o kubeconfig para garantir que o kubectl use o contexto correto
+  export KUBECONFIG=$HOME/.kube/config
+
   return 0
+}
+
+# Função para instalar e configurar o MetalLB no cluster Kind
+install_metallb() {
+  echo "Instalando MetalLB..."
+  kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+
+  echo "Aguardando pods do MetalLB ficarem prontos..."
+  kubectl wait --namespace metallb-system --for=condition=available deployment/controller --timeout=120s
+  kubectl wait --namespace metallb-system --for=condition=ready pod -l app=metallb --timeout=120s || true
+
+  if [ -f /workspaces/gitops-with-argocd/metallb-config.yaml ]; then
+    echo "Range de IPs configurado para o MetalLB (endereços disponíveis para LoadBalancer):"
+    grep 'addresses:' -A 1 /workspaces/gitops-with-argocd/metallb-config.yaml | tail -n1 | tr -d ' -'
+    echo "Aplicando configuração do MetalLB..."
+    kubectl apply -f /workspaces/gitops-with-argocd/metallb-config.yaml
+  else
+    echo "Arquivo metallb-config.yaml não encontrado!"
+  fi
 }
 
 # Função para instalar a CLI do ArgoCD e fazer o deploy no cluster Kind
@@ -108,6 +130,7 @@ main() {
 
   if check_docker; then
     create_kind_cluster
+    install_metallb
     install_argocd
     install_project_deps
     echo "Ambiente de desenvolvimento configurado com sucesso!"
